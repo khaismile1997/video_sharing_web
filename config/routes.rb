@@ -7,6 +7,15 @@ Rails.application.routes.draw do
       post 'signup', to: 'users#create'
       post 'login', to: 'sessions#create'
       delete 'logout', to: 'sessions#destroy'
+
+      resources :videos, only: %i(index create) do
+        member do
+          post 'like', to: 'likes#like'
+          post 'dislike', to: 'likes#dislike'
+          delete 'unlike', to: 'likes#unlike'
+          delete 'undislike', to: 'likes#undislike'
+        end
+      end
     end
   end
 end

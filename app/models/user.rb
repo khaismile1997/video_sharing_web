@@ -3,6 +3,8 @@ class User < ApplicationRecord
   before_save { self.email = email.downcase }
   before_validation :ensure_session_token
 
+  has_many :likes, foreign_key: :liker_id, class_name: :Like
+
   validates :username, presence: true, uniqueness: {case_sensitive: false}
   validates :username, length: {minimum: 3, maximum: 25}, if: :username?
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

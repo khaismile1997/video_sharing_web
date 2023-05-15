@@ -1,0 +1,5 @@
+google_api:
+  base_url: <%= ENV["GOOGLE_API_URL"] %>
+  youtube_api_key: <%= ENV["GOOGLE_YOUTUBE_DATA_API_V3"] %>
+youtube:
+  base_url: <%= ENV["YOUTUBE_BASE_URL"] %>

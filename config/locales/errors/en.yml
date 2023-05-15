@@ -2,3 +2,8 @@ en:
   api_error:
     invalid_login: 'There was something wrong with your login details.'
     invalid_logout: 'You need to be logged in to perform this action.'
+    invalid_unlike: 'Failed to unlike the video'
+    invalid_undislike: 'Failed to undislike the video'
+    unauthorized:
+      reason: INVALID_PAYLOAD
+      message: Not authorized

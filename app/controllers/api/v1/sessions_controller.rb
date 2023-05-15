@@ -12,7 +12,10 @@ class Api::V1::SessionsController < Api::V1::BaseController
   end
 
   def destroy
-    return logout! if current_user
+    if current_user
+      logout!
+      render json: success_message(I18n.t("messages.success.logout")) and return
+    end
     msg = I18n.t("api_error.invalid_logout")
     raise ActiveRecord::RecordNotFound, msg
   end

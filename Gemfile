@@ -26,6 +26,12 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'dotenv-rails'
 gem 'hashid-rails', '~> 1.4'
 gem 'active_model_serializers'
+gem 'config'
+gem 'faraday', '~> 0.9'
+gem 'faraday-multipart'
+gem 'googleauth'
+gem 'google-api-client', '0.8.2', require: 'google/api_client'
+gem 'will_paginate', '~> 3.3'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

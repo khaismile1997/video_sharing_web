@@ -6,8 +6,8 @@ class Api::V1::BaseController < ApplicationController
     @current_user ||= User.find_by(session_token: session[:session_token]) if session[:session_token]
   end
 
-  def logged_in?
-    !!current_user
+  def authenticate_user!
+    raise ApiError::Unauthorized unless current_user
   end
 
   def login!(user)
@@ -19,5 +19,11 @@ class Api::V1::BaseController < ApplicationController
     @current_user.reset_session_token!
     session[:session_token] = nil
     @current_user = nil
+  end
+
+  protected
+
+  def success_message(message)
+    ResponseTemplate.success(message)
   end
 end
