@@ -11,7 +11,6 @@ class Api::V1::BaseController < ApplicationController
   end
 
   def login!(user)
-    return if current_user
     @current_user = user
     session[:session_token] = user.reset_session_token!
   end

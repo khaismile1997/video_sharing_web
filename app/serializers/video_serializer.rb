@@ -3,6 +3,8 @@ class VideoSerializer < ApplicationSerializer
     url
     title
     description
+    total_likes
+    total_dislikes
   ).freeze
 
   attributes :id, *VIDEO_ATTRS

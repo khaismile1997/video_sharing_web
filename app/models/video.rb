@@ -1,5 +1,5 @@
 class Video < ApplicationRecord
-
+  attr_accessor :total_likes, :total_dislikes
   belongs_to :sharer, foreign_key: :sharer_id, class_name: :User
   has_many :likes, as: :likeable, dependent: :destroy
 

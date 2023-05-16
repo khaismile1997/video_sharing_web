@@ -15,7 +15,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
   web:
     build: .
-    command: bundle exec rails s -p 3000 -b "0.0.0.0"
+    command: bundle exec rails s -p 3001 -b "0.0.0.0"
     env_file:
       - .env
     environment:
@@ -28,7 +28,7 @@ services:
       - .:/video_sharing_web
       - bundle:/bundle
     ports:
-      - "3000:3000"
+      - "3001:3001"
     links:
       - db
     depends_on:

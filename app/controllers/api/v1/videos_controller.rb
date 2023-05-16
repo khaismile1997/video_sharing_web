@@ -1,7 +1,16 @@
 class Api::V1::VideosController < Api::V1::BaseController
 
   def index
-    videos = Video.paginate(page: params[:page], per_page: 10)
+    videos = Video.includes(:likes).paginate(page: params[:page], per_page: 10)
+    video_ids = videos.map(&:id)
+    like_counts = Like.by_likes.where(likeable_type: 'Video', likeable_id: video_ids).group(:likeable_id).count
+    dislike_counts = Like.by_dislikes.where(likeable_type: 'Video', likeable_id: video_ids).group(:likeable_id).count
+
+    videos.each do |video|
+      video.total_likes = like_counts[video.id].to_i
+      video.total_dislikes = dislike_counts[video.id].to_i
+    end
+
     render json: videos, each_serializer: VideoSerializer
   end
 
