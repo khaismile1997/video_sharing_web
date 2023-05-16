@@ -1,5 +1,5 @@
 class Api::V1::BaseController < ApplicationController
-  helper_method :current_user, :logged_in?
+  helper_method :current_user
   skip_before_action :verify_authenticity_token
 
   def current_user
@@ -11,6 +11,7 @@ class Api::V1::BaseController < ApplicationController
   end
 
   def login!(user)
+    return if current_user
     @current_user = user
     session[:session_token] = user.reset_session_token!
   end

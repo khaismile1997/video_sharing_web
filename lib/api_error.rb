@@ -23,4 +23,14 @@ module ApiError
 
   class Unauthorized < ApiError::Base
   end
+
+  module Auth
+    class Unauthorized < StandardError
+    end
+  end
+
+  module Youtube
+    class VideoNotExisted < StandardError
+    end
+  end
 end

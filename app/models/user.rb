@@ -3,6 +3,7 @@ class User < ApplicationRecord
   before_save { self.email = email.downcase }
   before_validation :ensure_session_token
 
+  has_many :shared_videos, foreign_key: :sharer_id, class_name: :Video
   has_many :likes, foreign_key: :liker_id, class_name: :Like
 
   validates :username, presence: true, uniqueness: {case_sensitive: false}
@@ -27,5 +28,4 @@ class User < ApplicationRecord
     self.save!
     self.session_token
   end
-
 end

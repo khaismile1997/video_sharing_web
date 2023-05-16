@@ -8,6 +8,7 @@ class Api::V1::VideosController < Api::V1::BaseController
   def create
     video_id = extract_video_id(params[:url])
     video_info = GoogleApi::Client.get_video_info(video_id)
+    raise ApiError::Youtube::VideoNotExisted, I18n.t("api_error.video_not_existed") if video_info.items.blank?
     video_params = extract_video_params(video_info)
     video = Video.new(video_params)
     raise ApiError::RecordInvalid, video if video.invalid?

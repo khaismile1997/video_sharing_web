@@ -42,6 +42,10 @@ group :development, :test do
   gem 'pry-byebug', require: false
   gem 'pry-doc', require: false
   gem 'pry-rails'
+  gem 'faker'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
 end
 
 group :development do

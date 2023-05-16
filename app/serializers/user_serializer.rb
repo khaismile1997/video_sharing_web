@@ -1,8 +1,8 @@
 class UserSerializer < ApplicationSerializer
   USER_ATTRS = %i(
-    username
     email
+    session_token
   ).freeze
 
-  attributes :id, *USER_ATTRS
+  attributes *USER_ATTRS
 end

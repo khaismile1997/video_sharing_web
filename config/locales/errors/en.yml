@@ -7,3 +7,4 @@ en:
     unauthorized:
       reason: INVALID_PAYLOAD
       message: Not authorized
+    video_not_existed: 'The video not existed. Please verify your URL again!'
