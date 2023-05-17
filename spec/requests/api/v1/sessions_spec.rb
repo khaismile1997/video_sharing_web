@@ -24,7 +24,7 @@ RSpec.describe 'Sessions', type: :request do
       include_context "when user has signed in"
     
       it 'logout success' do
-        delete '/api/v1/logout'
+        delete '/api/v1/logout', headers: headers
 
         expect(response).to have_http_status(:ok)
         expect(response.body).to include(I18n.t('messages.success.logout'))

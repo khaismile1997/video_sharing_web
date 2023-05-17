@@ -3,6 +3,7 @@ class VideoSerializer < ApplicationSerializer
     url
     title
     description
+    liked
     total_likes
     total_dislikes
   ).freeze

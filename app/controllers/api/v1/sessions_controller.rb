@@ -1,6 +1,11 @@
 class Api::V1::SessionsController < Api::V1::BaseController
 
   def create
+    if logged_in?
+      render json: current_user, serializer: UserSerializer
+      return
+    end
+
     user = User.find_by(email: params[:session][:email].downcase)
     if user&.authenticate(params[:session][:password])
       login!(user)
