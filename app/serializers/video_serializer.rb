@@ -12,4 +12,12 @@ class VideoSerializer < ApplicationSerializer
   def url
     extract_youtube_url(object.youtube_video_id)
   end
+
+  def total_likes
+    object.total_likes || 0
+  end
+
+  def total_dislikes
+    object.total_dislikes || 0
+  end
 end

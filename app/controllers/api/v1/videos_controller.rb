@@ -1,4 +1,5 @@
 class Api::V1::VideosController < Api::V1::BaseController
+  before_action :authenticate_user!, only: %i(create)
 
   def index
     videos = Video.includes(:likes).paginate(page: params[:page], per_page: 10)

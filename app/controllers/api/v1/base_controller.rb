@@ -3,7 +3,7 @@ class Api::V1::BaseController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def current_user
-    @current_user ||= User.find_by(session_token: session[:session_token]) if session[:session_token]
+    @current_user ||= User.find_by(session_token: access_token) if access_token
   end
 
   def authenticate_user!
@@ -25,5 +25,15 @@ class Api::V1::BaseController < ApplicationController
 
   def success_message(message)
     ResponseTemplate.success(message)
+  end
+
+  private
+
+  def access_token
+    extract_access_token(request.authorization) || session[:session_token]
+  end
+
+  def extract_access_token(token)
+    token.to_s.match(/Bearer\s+(.+)/)&.captures&.first
   end
 end
