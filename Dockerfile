@@ -30,3 +30,9 @@ RUN rm -rf ~/.bundle/cache && \
     find /usr/local/bundle/gems/ -name "*.o" -delete
 
 COPY . /video_sharing_web
+
+# Copy the entrypoint script into the image.
+COPY entrypoint.sh /usr/bin/
+
+# Set the entrypoint.
+ENTRYPOINT ["entrypoint.sh"]

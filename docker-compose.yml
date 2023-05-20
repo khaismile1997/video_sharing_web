@@ -21,6 +21,7 @@ services:
       - .env
     environment:
       - RAILS_ENV=${RAILS_ENV}
+      - REDIS_URL=redis://redis:6379/1
       - MYSQL_HOST=${DATABASE_HOST}
       - MYSQL_DATABASE=${DATABASE_NAME}
       - MYSQL_USER=${DATABASE_USER}
@@ -32,12 +33,22 @@ services:
       - "3001:3001"
     links:
       - db
+      - redis
     depends_on:
       - db
     stdin_open: true
     tty: true
+  redis:
+    image: redis:5
+    ports:
+    - 6379:6379
+    command: redis-server --appendonly yes
+    volumes:
+    - redis-data:/data
 volumes:
   db_data:
     driver: local
   bundle:
+    driver: local
+  redis-data:
     driver: local
