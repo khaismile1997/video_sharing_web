@@ -2,10 +2,28 @@ build:
   docker:
     web: Dockerfile
 
+setup:
+  addons:
+    - plan: heroku-redis:hobby-dev
+    - plan: cleardb:ignite
+    - plan: papertrail:choklad
+
 release:
   image: web
   command:
-    - bundle exec rake db:migrate
-    - bundle exec rake assets:precompile
-  environment:
-    RAILS_ENV: production
+    - bundle exec rails db:migrate
+    - bundle exec rails assets:precompile
+
+run:
+  web:
+    command:
+      - bundle exec puma -C config/puma.rb
+    image: web
+  redis:
+    command:
+      - redis-server
+      - "--appendonly"
+      - "yes"
+    image: redis:5
+  db:
+    image: cleardb:ignite
