@@ -33,6 +33,7 @@ gem 'googleauth'
 gem 'google-api-client', '0.8.2', require: 'google/api_client'
 gem 'will_paginate', '~> 3.3'
 gem 'rack-cors'
+gem 'redis'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

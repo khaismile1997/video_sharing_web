@@ -25,7 +25,7 @@ RSpec.describe 'Videos', type: :request do
 
       expect {
         post api_v1_videos_path, params: { url: video_url }
-      }.to change(Video, :count).by(1)
+      }.to change(Video, :count).by(1).and change(Notification, :count).by(1)
 
       expect(response).to have_http_status(:ok)
 

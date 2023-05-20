@@ -3,7 +3,7 @@ class Api::V1::VideosController < Api::V1::BaseController
   PER_PAGE = 10
 
   def index
-    videos = Video.includes(:likes).paginate(page: params[:page], per_page: PER_PAGE)
+    videos = Video.includes(:likes, :sharer).paginate(page: params[:page], per_page: PER_PAGE)
     video_ids = videos.map(&:id)
 
     like_counts = Like.by_likes.where(likeable_type: 'Video', likeable_id: video_ids).group(:likeable_id).count
@@ -17,6 +17,7 @@ class Api::V1::VideosController < Api::V1::BaseController
       video.total_likes = like_counts[video.id].to_i
       video.total_dislikes = dislike_counts[video.id].to_i
       video.liked = liked_disliked_videos&.fetch(video.id, nil)
+      video.sharer_email = video.sharer.email
     end
 
     render json: videos, each_serializer: VideoSerializer,
@@ -31,6 +32,7 @@ class Api::V1::VideosController < Api::V1::BaseController
     video = Video.new(video_params)
     raise ApiError::RecordInvalid, video if video.invalid?
     video.save!
+    Notification.create!(video: video)
     render json: video, serializer: VideoSerializer
   end
 
