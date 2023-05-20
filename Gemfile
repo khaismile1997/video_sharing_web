@@ -1,18 +1,18 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '>= 3.0.6'
+ruby '3.2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+gem 'mysql2', '>= 0.4.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.0'
+gem 'webpacker'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -24,14 +24,14 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'dotenv-rails'
-gem 'hashid-rails', '~> 1.4'
+gem 'hashid-rails'
 gem 'active_model_serializers'
 gem 'config'
-gem 'faraday', '~> 0.9'
+gem 'faraday'
 gem 'faraday-multipart'
 gem 'googleauth'
 gem 'google-api-client', '0.8.2', require: 'google/api_client'
-gem 'will_paginate', '~> 3.3'
+gem 'will_paginate'
 gem 'rack-cors'
 gem 'redis', '>= 3.3', '< 5'
 gem 'psych', '< 4.0.0'

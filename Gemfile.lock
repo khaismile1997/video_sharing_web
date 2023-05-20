@@ -366,14 +366,14 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   faker
-  faraday (~> 0.9)
+  faraday
   faraday-multipart
   google-api-client (= 0.8.2)
   googleauth
-  hashid-rails (~> 1.4)
+  hashid-rails
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
-  mysql2 (>= 0.4.4, < 0.6.0)
+  mysql2 (>= 0.4.4)
   pry-byebug
   pry-doc
   pry-rails
@@ -392,11 +392,11 @@ DEPENDENCIES
   tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
-  webpacker (~> 4.0)
-  will_paginate (~> 3.3)
+  webpacker
+  will_paginate
 
 RUBY VERSION
-   ruby 3.0.6p216
+   ruby 3.2.0p0
 
 BUNDLED WITH
    2.2.33
