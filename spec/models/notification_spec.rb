@@ -6,7 +6,7 @@ RSpec.describe Notification, type: :model do
     let(:notification) { Notification.new(video: video) }
 
     it 'calls the NotificationBroadcastJob' do
-      expect(NotificationBroadcastJob).to receive(:perform_now).with(notification)
+      expect(NotificationBroadcastJob).to receive(:perform_later).with(notification)
       notification.save!
     end
   end

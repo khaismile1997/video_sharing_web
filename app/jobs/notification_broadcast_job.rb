@@ -3,8 +3,7 @@ class NotificationBroadcastJob < ApplicationJob
 
   def perform(notification)
     video = notification.video
-    ActionCable.server.broadcast('notifications',
-      notification: { video_title: video.title, sharer_email: video.sharer.email }
-    )
+    notification_info = { video_title: video.title, sharer_email: video.sharer.email }
+    ActionCable.server.broadcast('notifications', notification_info)
   end
 end
