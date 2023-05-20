@@ -9,10 +9,16 @@ module ApplicationCable
     protected
 
     def find_verfied_user
-      session_token = request.session[:session_token]
+      session_token = extract_token_from_url
       user = User.find_by(session_token: session_token)
       return if user
       raise ApiError::Unauthorized
+    end
+
+    def extract_token_from_url
+      query_params = URI.parse(request.url).query
+      query_params_hash = Rack::Utils.parse_nested_query(query_params)
+      query_params_hash['token']
     end
   end
 end
