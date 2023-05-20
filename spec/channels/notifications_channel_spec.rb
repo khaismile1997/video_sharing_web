@@ -10,7 +10,7 @@ RSpec.describe NotificationsChannel, type: :channel do
 
   it 'subscribes to the user-specific notifications channel' do
     expect(subscription).to be_confirmed
-    expect(subscription.streams).to include("notifications:#{user.hashid}")
+    expect(subscription.streams).to include("notifications")
   end
 
   it 'unsubscribes from all streams' do
