@@ -19,8 +19,8 @@ RUN echo 'gem: --no-document' > ~/.gemrc && \
 RUN bundle config set no-cache 'true' && \
     BUNDLE_FORCE_RUBY_PLATFORM=1 bundle install --jobs=4
 
-RUN npm install -g yarn
-RUN yarn install --check-files
+# RUN npm install -g yarn
+# RUN yarn install --check-files
 
 RUN rm -rf ~/.bundle/cache && \
     rm -rf /usr/local/bundle/cache/*.gem && \
