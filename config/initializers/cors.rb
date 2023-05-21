@@ -15,6 +15,8 @@ end
 if Rails.env.production?
   puts "---------- env ----------"
   puts "---------- production ----------"
+  puts ENV["REDIS_URL"]
+  puts ENV["REDIS_TLS_URL"]
   Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
       origins 'https://video-sharing-fe-web.herokuapp.com'
