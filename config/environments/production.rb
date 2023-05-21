@@ -3,6 +3,10 @@ Rails.application.configure do
   config.hosts = [
     "video-sharing-web.herokuapp.com"
   ]
+  config.action_cable.url = "wss://#{ENV['RAILS_HOST']}/cable"
+  config.action_cable.allowed_request_origins = [
+    'https://video-sharing-fe-web.herokuapp.com/'
+  ]
   # Code is not reloaded between requests.
   config.cache_classes = true
 

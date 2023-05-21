@@ -3,7 +3,7 @@ if Rails.env.development?
   puts "---------- development ----------"
   Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
-      origins /\Ahttp:\/\/localhost(?::\d+)?\z/
+      origins 'www.example.com', /\Ahttp:\/\/localhost(?::\d+)?\z/
       resource "*",
                headers: :any,
                methods: [:get, :post, :options, :delete, :put, :patch, :head],
