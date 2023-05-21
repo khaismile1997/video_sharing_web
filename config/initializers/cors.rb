@@ -1,4 +1,6 @@
 if Rails.env.development?
+  puts "---------- env ----------"
+  puts "---------- development ----------"
   Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
       origins /\Ahttp:\/\/localhost(?::\d+)?\z/
@@ -10,13 +12,15 @@ if Rails.env.development?
   end
 end
 
-if Rails.env.heroku?
+if Rails.env.production?
+  puts "---------- env ----------"
+  puts "---------- production ----------"
   Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
-      origins /\Ahttps?:\/\/video\-[a-z\-\d]+\.herokuapp\.com\/?\z/
-      resource "*",
+      origins 'https://video-sharing-fe-web.herokuapp.com'
+      resource '/api/*',
                headers: :any,
-               methods: [:get, :post, :options, :delete, :put, :patch, :head],
+               methods: [:get, :post, :put, :patch, :delete, :options, :head],
                credentials: true
     end
   end
