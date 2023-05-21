@@ -19,11 +19,3 @@ run:
     command:
       - bundle exec puma -C config/puma.rb
     image: web
-  redis:
-    command:
-      - redis-server
-      - "--appendonly"
-      - "yes"
-    image: redis:5
-  db:
-    image: cleardb:ignite
