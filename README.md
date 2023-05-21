@@ -27,16 +27,22 @@ To run the Video Sharing Web Application, you need the following software and to
    - Ubuntu: sudo service mysql start
 2. Run database migrations: `rails db:migrate`
 
-## Running the Application
+## Running the Application (without Docker)
 1. Start the development server: `rails s`
-2. Access the web api in your web browser at: `http://localhost:3001`
-3. Run the test suite: `rspec`
+2. Run migration: `rails db:migrate`
+3. Change .env file:
+   DATABASE_HOST=localhost
+   DATABASE_USER=root
+   DATABASE_PASSWORD=''
+4. Access the web api in your web browser at: `http://localhost:3001`
+5. Run the test suite: `rspec`
 
 ## Docker Deployment
 1. Build the Docker image: `docker-compose build`
 2. Run the Docker container: `docker-compose up`
 3. Run migration: `docker-compose run web rake db:migrate`
-3. Access the web api in your web browser at: `http://localhost:3001`
+4. Access the web api in your web browser at: `http://localhost:3001`
+5. Run the test suite: `docker-compose run web rspec`
 
 ## Usage
 - Register a new account or log in with your existing credentials.

@@ -35,7 +35,7 @@ RSpec.describe 'Videos', type: :request do
         description: 'Test Description',
         sharer_id: user.id,
       }
-      result = Video.first.attributes.symbolize_keys.slice(:youtube_video_id, :title, :description, :sharer_id)
+      result = Video.last.attributes.symbolize_keys.slice(:youtube_video_id, :title, :description, :sharer_id)
       expect(result).to eq(expected_video)
     end
 

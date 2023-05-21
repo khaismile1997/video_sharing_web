@@ -4,7 +4,8 @@ Rails.application.configure do
     IPAddr.new("0.0.0.0/0"),
     IPAddr.new("::/0"),
     "localhost",
-    "video-sharing-web.herokuapp.com"
+    "video-sharing-web.herokuapp.com",
+    "www.example.com"
   ]
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

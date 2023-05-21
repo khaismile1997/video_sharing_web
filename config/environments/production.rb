@@ -1,7 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.hosts = [
-    "video-sharing-web.herokuapp.com"
+    "video-sharing-web.herokuapp.com",
+    "www.example.com"
   ]
   config.action_cable.url = "wss://#{ENV['RAILS_HOST']}/cable"
   config.action_cable.allowed_request_origins = [

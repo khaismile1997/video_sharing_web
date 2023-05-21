@@ -7,11 +7,10 @@ RSpec.describe 'Users', type: :request do
     let!(:valid_params) { { user: { username: username, email: email, password: 'password' } } }
 
     it 'creates a new user' do
-      post '/api/v1/signup', params: valid_params
+      expect { post '/api/v1/signup', params: valid_params }.to change { User.count }.by(1)
 
       expect(response).to have_http_status(:ok)
-      expect(User.count).to eq(1)
-      expect(User.first.email).to eq(email)
+      expect(User.last.email).to eq(email)
     end
 
     it 'returns an error with invalid parameters' do
