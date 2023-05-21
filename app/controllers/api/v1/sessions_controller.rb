@@ -6,7 +6,7 @@ class Api::V1::SessionsController < Api::V1::BaseController
       return
     end
 
-    user = User.find_by(email: params[:session][:email].downcase)
+    user = User.find_by(email: params[:session][:email]&.downcase)
     if user&.authenticate(params[:session][:password])
       login!(user)
       render json: user, serializer: UserSerializer

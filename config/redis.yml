@@ -9,4 +9,4 @@ test:
   <<: *default
 
 production:
-  url: <%= ENV.fetch('REDIS_TLS_URL', '') %>
+  url: <%= ENV.fetch('REDIS_URL', '') %>

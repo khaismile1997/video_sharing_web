@@ -13,8 +13,16 @@ end
 if Rails.env.production?
   Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
-      origins 'https://video-sharing-fe-web.herokuapp.com', /\Ahttp:\/\/localhost(?::\d+)?\z/ # Add to test on local
+      origins 'https://video-sharing-fe-web.herokuapp.com'
       resource '/api/*',
+               headers: :any,
+               methods: [:get, :post, :put, :patch, :delete, :options, :head],
+               credentials: true
+    end
+
+    allow do
+      origins 'https://video-sharing-fe-web.herokuapp.com'
+      resource '/cable',
                headers: :any,
                methods: [:get, :post, :put, :patch, :delete, :options, :head],
                credentials: true

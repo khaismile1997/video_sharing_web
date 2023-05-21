@@ -1,13 +1,17 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.hosts = [
-    "video-sharing-web.herokuapp.com",
-    "www.example.com"
+    "video-sharing-web.herokuapp.com"
   ]
-  config.action_cable.url = "wss://#{ENV['RAILS_HOST']}/cable"
-  config.action_cable.allowed_request_origins = [
-    'https://video-sharing-fe-web.herokuapp.com/'
-  ]
+  # config.action_cable.url = "wss://#{ENV['RAILS_HOST']}/cable"
+  # config.action_cable.allowed_request_origins = [
+  #   'https://video-sharing-fe-web.herokuapp.com'
+  # ]
+  config.action_cable.disable_request_forgery_protection = true
+  # Mount Action Cable outside main process or domain
+  # config.action_cable.mount_path = nil
+  # config.action_cable.url = 'wss://example.com/cable'
+  # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
   # Code is not reloaded between requests.
   config.cache_classes = true
 
